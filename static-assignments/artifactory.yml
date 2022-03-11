@@ -1,0 +1,6 @@
+---
+- hosts: artifactory
+  become: true
+  tags: artifactory
+  roles:
+     - artifactory

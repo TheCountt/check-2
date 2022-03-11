@@ -1,0 +1,24 @@
+---
+- name: install jenkins on debian OS
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: install jenkins on redhat OS
+  include_tasks: redhat.yml
+  when: ansible_os_family == 'Redhat'
+
+
+- name: install community module
+  shell: >
+   ansible-galaxy collection install community.postgresql
+  args:
+   creates: community.txt
+ 
+- name: Install psycopg2
+  shell: >
+   pip3 install psycopg2
+  args:
+   creates: psycopg2.txt
+
+
+
